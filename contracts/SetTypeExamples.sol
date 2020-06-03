@@ -40,10 +40,6 @@ contract ExampleBytes32Set {
     function keyAtIndex(uint index) public view returns(bytes32) {
         return set.keyAtIndex(index);
     }
-    
-    function nukeSet() public {
-        set.nukeSet();
-    }
 }
 
 contract ExampleAddressSet {
@@ -73,10 +69,6 @@ contract ExampleAddressSet {
     
     function keyAtIndex(uint index) public view returns(address) {
         return set.keyAtIndex(index);
-    }
-    
-    function nukeSet() public {
-        set.nukeSet();
     }
 }
 
@@ -108,10 +100,6 @@ contract ExampleUintSet {
     function keyAtIndex(uint index) public view returns(uint) {
         return set.keyAtIndex(index);
     }
-    
-    function nukeSet() public {
-        set.nukeSet();
-    }
 }
 
 contract ExampleStringSet {
@@ -141,9 +129,5 @@ contract ExampleStringSet {
     
     function keyAtIndex(uint index) public view returns(string memory) {
         return set.keyAtIndex(index);
-    }
-    
-    function nukeSet() public {
-        set.nukeSet();
     }
 }
