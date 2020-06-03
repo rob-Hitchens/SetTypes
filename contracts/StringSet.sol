@@ -68,17 +68,6 @@ library StringSet {
     function keyAtIndex(Set storage self, uint index) internal view returns (string memory) {
         return self.keyList[index];
     }
-
-    
-    /**
-     * @notice destroy the Set. The Set will have zero members.
-     * @dev does not prune mapped data. Enumerate keys and delete individually
-     * to fully remove.
-     * @param self storage pointer to a Set. 
-     */     
-    function nukeSet(Set storage self) public {
-        delete self.keyList;
-    }
     
     function toBytes32(string memory s) private pure returns (bytes32) {
         return(keccak256(bytes(s)));
