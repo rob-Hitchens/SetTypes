@@ -1,12 +1,6 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
-/**
- * @notice Key sets with enumeration and delete. Uses mappings for random
- * and existence checks and dynamic arrays for enumeration. Key uniqueness is enforced. 
- * @dev Sets are unordered. Delete operations reorder keys. All operations have a 
- * fixed gas cost at any scale, O(1). 
- * author: Rob Hitchens
- */
+// SPDX-License-Identifier: Unlicensed
 
 library Bytes32Set {
     
@@ -23,7 +17,8 @@ library Bytes32Set {
      */
     function insert(Set storage self, bytes32 key) internal {
         require(!exists(self, key), "Bytes32Set: key already exists in the set.");
-        self.keyPointers[key] = self.keyList.push(key)-1;
+        self.keyPointers[key] = self.keyList.length;
+        self.keyList.push(key);
     }
 
     /**
@@ -42,7 +37,7 @@ library Bytes32Set {
             self.keyList[rowToReplace] = keyToMove;
         }
         delete self.keyPointers[key];
-        self.keyList.length--;
+        self.keyList.pop();
     }
 
     /**
