@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
 /**
  * @notice Key sets with enumeration and delete. Uses mappings for random
@@ -23,7 +23,8 @@ library UintSet {
      */       
     function insert(Set storage self, uint key) internal {
         require(!exists(self, key), "UintSet: key already exists in the set.");
-        self.keyPointers[key] = self.keyList.push(key)-1;
+        self.keyPointers[key] = self.keyList.length;
+        self.keyList.push(key);
     }
 
     /**
@@ -42,7 +43,7 @@ library UintSet {
             self.keyList[rowToReplace] = keyToMove;
         }
         delete self.keyPointers[key];
-        self.keyList.length--;
+        self.keyList.pop();
     }
 
     /**
